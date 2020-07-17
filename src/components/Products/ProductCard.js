@@ -57,20 +57,23 @@ const ProductCard = ({ product }) => {
       cancelUrl: `${window.location.origin}/advanced`,
     })
 
+
     if (error) {
       console.warn('Error:', error)
       setLoading(false)
     }
   }
+  
 
   return (
     <div style={cardStyles}>
       <form onSubmit={handleSubmit}>
         <h4>{product.name}</h4>
+        <img src={product.images[0]} alt={product.description}></img>
         <select name="priceSelect">
           {product.prices.map(price => (
-            <option key={price.id} value={price.id}>
-              {formatPrice(price.unit_amount, price.currency)}
+            <option key={price.id} value={price.id} >
+            {formatPrice(price.unit_amount, price.currency)} - {price.nickname}
             </option>
           ))}
         </select>

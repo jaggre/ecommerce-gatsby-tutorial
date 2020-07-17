@@ -17,7 +17,8 @@ const Products = () => {
         query ProductPrices {
           prices: allStripePrice(
             filter: { active: { eq: true } }
-            sort: { fields: [unit_amount] }
+            sort: { fields: [unit_amount]
+             }
           ) {
             edges {
               node {
@@ -25,9 +26,12 @@ const Products = () => {
                 active
                 currency
                 unit_amount
+                nickname
                 product {
                   id
                   name
+                  images
+                  description
                 }
               }
             }
